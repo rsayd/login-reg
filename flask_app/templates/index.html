@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Registration</title>
+</head>
+<style>
+    .container {
+        width: 1000px;
+        height: 600px;
+        background-color: grey;
+        margin: auto;
+    }
+
+    .col {
+        text-align: center;
+        font-size: 20px;
+    }
+
+    h3 {
+        padding-top: 20px;
+    }
+</style>
+
+<body>
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col">
+                {% with messages = get_flashed_messages() %} <!-- declare a variable called messages -->
+                {% if messages %} <!-- check if there are any messages -->
+                {% for message in messages %} <!-- loop through the messages -->
+                <p>{{message}}</p>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <h3>Register</h3>
+                <form action="/register" method="post">
+                    <div>
+                        <label for="first_name">First Name:</label>
+                        <input type="text" name="first_name" />
+                    </div>
+                    <div>
+                        <label for="last_name">Last Name:</label>
+                        <input type="text" name="last_name" />
+                    </div>
+                    <div>
+                        <label for="email">Email:</label>
+                        <input type="text" name="email" />
+                    </div>
+                    <div>
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" />
+                    </div>
+                    <div>
+                        <label for="password">Confirm Password:</label>
+                        <input type="password" name="confirm_password" />
+                    </div>
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+            <div class="col">
+
+                {% if messages %}
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
+                {% endif %}
+                <h3>Login</h3>
+                <form action="/login" method="post">
+                    <div>
+                        <label for="email">Email:</label>
+                        <input type="text" name="email" />
+                    </div>
+                    <div>
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" />
+                    </div>
+                    <div>
+                        <button type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
